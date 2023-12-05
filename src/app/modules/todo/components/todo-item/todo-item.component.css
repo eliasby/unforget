@@ -1,0 +1,4 @@
+.complete {
+  color: var(--tui-text-03);
+  text-decoration: line-through;
+}

@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <div class="flex gap-3 mb-4">
+    <tui-input class="grow" tuiAutoFocus formControlName="name">
+      Name
+      <input tuiTextfield data-testid="name-input" />
+    </tui-input>
+    <tui-select
+      class="w-[120px]"
+      [valueContent]="priorities ? stringify(priorities) : loading"
+      formControlName="priority"
+      data-testid="priority-select"
+    >
+      Priority
+      <ng-template tuiDataList>
+        <tui-data-list *ngIf="priorities; else loading">
+          <button
+            *ngFor="let priority of priorities"
+            tuiOption
+            [value]="priority.value"
+          >
+            {{ priority.label }}
+          </button>
+        </tui-data-list>
+      </ng-template>
+      <ng-template #loading>
+        <tui-loader class="tui-space_vertical-3 loader"></tui-loader>
+      </ng-template>
+    </tui-select>
+  </div>
+  <div class="flex gap-2">
+    <button
+      type="submit"
+      size="m"
+      tuiButton
+      [disabled]="isPristine || form.invalid"
+      (click)="onSave()"
+      data-testid="save-button"
+    >
+      Save
+    </button>
+    <button
+      type="button"
+      size="m"
+      appearance="outline"
+      tuiButton
+      (click)="onCancel()"
+      data-testid="cancel-button"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

@@ -1,0 +1,59 @@
+<div class="flex flex-col gap-5 p-5">
+  <form class="flex gap-3" [formGroup]="form" (ngSubmit)="addNewTodo()">
+    <tui-input class="grow" formControlName="name">
+      Create todo here
+      <input tuiTextfield data-testid="name-input" />
+    </tui-input>
+    <tui-select
+      class="w-[120px]"
+      [valueContent]="priorities ? stringify(priorities) : loading"
+      formControlName="priority"
+      data-testid="priority-select"
+    >
+      Priority
+      <ng-template tuiDataList>
+        <tui-data-list *ngIf="priorities; else loading">
+          <button
+            *ngFor="let priority of priorities"
+            tuiOption
+            [value]="priority.value"
+          >
+            {{ priority.label }}
+          </button>
+        </tui-data-list>
+      </ng-template>
+      <ng-template #loading>
+        <tui-loader class="tui-space_vertical-3 loader"></tui-loader>
+      </ng-template>
+    </tui-select>
+    <button
+      tuiIconButton
+      appearance="primary"
+      type="button"
+      icon="tuiIconPlus"
+      (click)="addNewTodo()"
+      data-testid="add-todo-button"
+    ></button>
+  </form>
+  <div class="flex flex-col gap-3">
+    <tui-tabs [(activeItemIndex)]="activeTabIndex">
+      <button tuiTab>All</button>
+      <button tuiTab>In Progress</button>
+      <button tuiTab>Completed</button>
+    </tui-tabs>
+    <app-todo-list
+      *ngIf="activeTabIndex === 0"
+      [todos]="allTodos"
+    ></app-todo-list>
+    <app-todo-list
+      *ngIf="activeTabIndex === 1"
+      [todos]="inProgressTodos"
+      emptyLabel="No todos in progress."
+    ></app-todo-list>
+    <app-todo-list
+      *ngIf="activeTabIndex === 2"
+      [todos]="completedTodos"
+      emptyLabel="No completed todos."
+    ></app-todo-list>
+  </div>
+</div>

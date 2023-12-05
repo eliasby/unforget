@@ -1,0 +1,34 @@
+<div class="flex items-center justify-between h-[50px]">
+  <p
+    class="tui-text_body-m-2"
+    [class.complete]="isComplete"
+    data-testid="name-label"
+  >
+    {{ todo.name }}
+  </p>
+  <div class="flex gap-0">
+    <button
+      tuiIconButton
+      appearance="icon"
+      type="button"
+      [icon]="toggleIcon"
+      aria-label="Complete"
+      (click)="toggleTodoStatus(todo)"
+      class="complete-button"
+      [class.todo-item-toggle-green]="!isComplete"
+      data-testid="complete-button"
+    ></button>
+    <tui-hosted-dropdown [content]="menu">
+      <button
+        tuiIconButton
+        appearance="icon"
+        type="button"
+        icon="tuiIconMoreVertical"
+        data-testid="menu-button"
+      ></button>
+    </tui-hosted-dropdown>
+    <ng-template #menu>
+      <app-todo-menu [todo]="todo" />
+    </ng-template>
+  </div>
+</div>

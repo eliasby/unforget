@@ -1,0 +1,17 @@
+<tui-data-list role="menu">
+  <a
+    tuiOption
+    aria-label="Edit"
+    (click)="changeTodoName(todo)"
+    data-testid="edit-button"
+    >Edit</a
+  >
+  <a
+    class="remove-button"
+    tuiOption
+    (click)="removeTodo(todo)"
+    aria-label="Delete"
+    data-testid="remove-button"
+    >Delete</a
+  >
+</tui-data-list>

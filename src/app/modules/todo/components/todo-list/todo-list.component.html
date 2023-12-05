@@ -1,0 +1,22 @@
+<div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-3">
+    <app-todo-item
+      [todo]="todo"
+      *ngFor="let todo of pagedTodos"
+    ></app-todo-item>
+  </div>
+  <p
+    class="flex items-center justify-between"
+    *ngIf="todos.length === 0"
+    data-testid="empty-label"
+  >
+    {{ emptyLabel }}
+  </p>
+  <div [class.hidden]="pageCount < 2">
+    <tui-pagination
+      [index]="pageIndex"
+      [length]="pageCount"
+      (indexChange)="goToPage($event)"
+    ></tui-pagination>
+  </div>
+</div>

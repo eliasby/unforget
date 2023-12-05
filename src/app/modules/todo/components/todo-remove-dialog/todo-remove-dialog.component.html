@@ -1,0 +1,23 @@
+<p class="mb-4">Are you sure?</p>
+<div class="flex gap-2">
+  <button
+    size="m"
+    appearance="accent"
+    tuiButton
+    type="button"
+    (click)="onRemove()"
+    data-testid="remove-button"
+  >
+    Remove
+  </button>
+  <button
+    size="m"
+    appearance="outline"
+    tuiButton
+    type="button"
+    (click)="onCancel()"
+    data-testid="cancel-button"
+  >
+    Cancel
+  </button>
+</div>

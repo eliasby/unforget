@@ -1,0 +1,13 @@
+{
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrderSeparation": false,
+  "importOrder": [
+    "zone.js/testing",
+    "^@angular/core$",
+    "^@angular/(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@/(.*)$",
+    "^[./](.*)$"
+  ],
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
+}
