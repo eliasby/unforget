@@ -1,7 +1,5 @@
 # Unforget
 
-To do list.
-
 ## Getting Started
 
 Install dependencies:
@@ -18,6 +16,6 @@ pnpm start
 
 ## Licensing
 
-Unforget is released under the [MIT](LICENSE) license.
+Unforget is released under [The MIT License](./LICENSE.md).
 
 When contributing to Unforget, you can find the relevant license in the comments at the top of each file.
